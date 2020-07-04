@@ -1,0 +1,27 @@
+<%= form_with(model: post, local: true) do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :number, '配達個数' %>
+    <%= f.number_field :number, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :content, "その他追記事項(特になければ空白で構いません)" %>
+    <%= f.text_area :content, class: 'form-control'  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
